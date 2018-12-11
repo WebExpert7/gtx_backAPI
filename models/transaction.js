@@ -47,7 +47,7 @@ const Schema = mongoose.Schema({
 		type: 'Number'
 	},
 	value: {
-		type: 'Date'
+		type: 'Number'
 	},
 	v: {
 		type: 'String'
