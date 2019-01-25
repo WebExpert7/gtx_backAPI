@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const mysql = require('mysql');
-const mysql_config = require('../config/mysql_connection');
+// const mysql = require('mysql');
+// const mysql_config = require('../config/mysql_connection');
 // const handleDisconnect = require('../config/db_handleDisconnect');
 // const config = require('../config/database');
 const bodyParser = require('body-parser');
@@ -40,29 +40,8 @@ router.post('/wallet_generation', (req, res, next) => {
     const password = req.body.password;
     axios.get('https://bitaps.com/api/create/redeemcode?confirmations=1')
         .then(function (response) {
-            const values  = {username: username, password: password, addr: response.data.address, redeem_code: response.data.redeem_code, invoice: response.data.invoice};
-
-            // if(connection.state === 'disconnected'){
-            //     connection.connect();
-            // }
-
-            handleDisconnect();
-
-            connection.query('INSERT INTO btc SET ?', values, function (error, results, fields) {
-                if (error) {
-                    console.log(error);
-                    return res.json({
-                        error: true,
-                        msg: "retrying connection"
-                    });
-                }
-                connection.end();
                 return res.json(response.data);
             });
-        })
-        .catch(function (error) {
-            return res.json({success: false, msg: 'Request Error!'});
-        });
 });
 
 router.post('/wallet_info', (req, res, next) => {

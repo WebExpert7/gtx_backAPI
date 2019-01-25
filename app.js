@@ -3,7 +3,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const passport = require('passport');
-const mysql_connection = require('./config/mysql_connection');
+// const mysql_connection = require('./config/mysql_connection');
 const mongoose = require('mongoose');
 const config = require('./config/database');
 
@@ -17,7 +17,8 @@ const app = express();
 
 // const users = require('./routes/users');
 const gtx = require('./routes/gtx');
-// const btc = require('./routes/btc');
+const eth = require('./routes/eth');
+const btc = require('./routes/btc');
 // const toc = require('./routes/toc');
 // const xrp = require('./routes/xrp');
 // const trx = require('./routes/trx');
@@ -47,7 +48,8 @@ app.use(bodyParser.json());
 
 // app.use('/users', users);
 app.use('/api/gtx', gtx);
-// app.use('/api/btc', btc);
+app.use('/api/eth', eth);
+app.use('/api/btc', btc);
 // app.use('/api/toc', toc);
 // app.use('/api/xrp', xrp);
 // app.use('/api/trx', trx);

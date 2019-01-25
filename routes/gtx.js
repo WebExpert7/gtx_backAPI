@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const mysql = require('mysql');
-const mysql_config = require('../config/mysql_connection');
+// const mysql = require('mysql');
+// const mysql_config = require('../config/mysql_connection');
 // const handleDisconnect = require('../config/db_handleDisconnect');
 const bodyParser = require('body-parser');
 // const Eth = require('../models/eth');
